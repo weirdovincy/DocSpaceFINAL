@@ -14,6 +14,15 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     target: 'es2022',
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-popover', '@radix-ui/react-tooltip'],
+        },
+      },
+    },
   },
   optimizeDeps: {
     esbuildOptions: {
